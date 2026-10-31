@@ -1,0 +1,59 @@
+-- Subjects with age greater than average age
+WITH avg_age AS (
+  SELECT AVG(age) as avg_age FROM subjects
+)
+SELECT subject_id, age FROM subjects
+WHERE age > (SELECT avg_age FROM avg_age);
+
+-- Average BMI per treatment using CTE
+WITH BMI_calc AS (
+  SELECT treatment, weight_kg / ((height_cm/100.0)*(height_cm/100.0)) as bmi
+  FROM subjects
+)
+SELECT treatment, ROUND(AVG(bmi),1) as avg_bmi
+FROM BMI_calc
+GROUP BY treatment;
+
+-- Average age per site then rank sites by average age
+WITH avg_per_site AS (
+  SELECT site_id, AVG(age) as avg_age FROM subjects GROUP BY site_id
+)
+SELECT site_id, ROUND(avg_age,1) as avg_age,
+RANK() OVER (ORDER BY avg_age DESC) as site_rank
+FROM avg_per_site
+ORDER BY site_rank;
+
+-- Oldest subject per site using RANK partition
+WITH ranked AS (
+  SELECT subject_id, site_id, age,
+  RANK() OVER (PARTITION BY site_id ORDER BY age DESC) as rnk
+  FROM subjects
+)
+SELECT site_id, subject_id, age FROM ranked WHERE rnk = 1;
+
+-- Top two oldest subjects per site
+WITH ranked AS (
+  SELECT site_id, subject_id, age,
+  ROW_NUMBER() OVER (PARTITION BY site_id ORDER BY age DESC) as rnk
+  FROM subjects
+)
+SELECT * FROM ranked WHERE rnk <= 2
+ORDER BY site_id, rnk;
+
+-- Obese count per treatment using CTE BMI
+WITH BMI_calc AS (
+  SELECT treatment, weight_kg / ((height_cm/100.0)*(height_cm/100.0)) as bmi
+  FROM subjects
+)
+SELECT treatment, COUNT(*) as obese_count
+FROM BMI_calc WHERE bmi > 30
+GROUP BY treatment;
+
+-- Age above average of their own site using window AVG
+WITH with_avg AS (
+  SELECT *, AVG(age) OVER (PARTITION BY site_id) as site_avg
+  FROM subjects
+)
+SELECT subject_id, site_id, age, ROUND(site_avg,1) as site_avg
+FROM with_avg WHERE age > site_avg
+LIMIT 20;
