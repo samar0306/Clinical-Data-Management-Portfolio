@@ -1,168 +1,76 @@
-\# End-to-End Clinical Data Management Portfolio Project
-
-
-
-\## Project Overview
-
-
+End-to-End Clinical Data Management Portfolio Project
 
 This project demonstrates an end-to-end Clinical Data Management (CDM) workflow for a synthetic Phase II clinical trial. The project covers clinical data collection, CRF design, data quality review, SQL validation, query management, reconciliation, documentation, and safety analytics.
 
+Study Overview
 
-
-\## Study Overview
-
-
-
-\- Study ID: ONC-2026-001
-
-\- Study Phase: Phase II
-
-\- Therapeutic Area: Type 2 Diabetes
-
-\- Study Type: Randomized, double-blind, placebo-controlled
-
-\- Investigational Product: ABC-101
-
-\- Synthetic Subjects: 500
-
-\- Study Sites: 10
-
-\- Treatment Arms:
-
+Study ID: ONC-2026-001
+Study Phase: Phase II
+Therapeutic Area: Type 2 Diabetes
+Study Type: Randomized, double-blind, placebo-controlled
+Investigational Product: ABC-101
+Synthetic Subjects: 500
+Study Sites: 10
+Treatment Arms:
 &#x20; - ABC-101 50 mg
-
 &#x20; - ABC-101 100 mg
-
 &#x20; - Placebo
 
+Objectives
+- Design clinical data collection instruments
+- Build and validate CRFs
+- Generate and review synthetic clinical trial data
+- Perform data quality checks
+- Validate data using SQL
+- Document and manage data queries
+- Perform cross-domain data reconciliation
+- Create clinical data management documentation
+- Develop a Power BI safety analytics dashboard
 
+Tools \& Technologies
+- REDCap
+- Microsoft Excel
+- Python
+- PostgreSQL
+- SQL
+- Power BI
+- Git
+- GitHub
 
-\## Objectives
+Clinical Data Domains
+- Demographics
+- Medical History
+- Study Visits
+- Vital Signs
+- Laboratory
+- Adverse Events
+- Concomitant Medications
 
-
-
-\- Design clinical data collection instruments
-
-\- Build and validate CRFs
-
-\- Generate and review synthetic clinical trial data
-
-\- Perform data quality checks
-
-\- Validate data using SQL
-
-\- Document and manage data queries
-
-\- Perform cross-domain data reconciliation
-
-\- Create clinical data management documentation
-
-\- Develop a Power BI safety analytics dashboard
-
-
-
-\## Tools \& Technologies
-
-
-
-\- REDCap
-
-\- Microsoft Excel
-
-\- Python
-
-\- PostgreSQL
-
-\- SQL
-
-\- Power BI
-
-\- Git
-
-\- GitHub
-
-
-
-\## Clinical Data Domains
-
-
-
-\- Demographics
-
-\- Medical History
-
-\- Study Visits
-
-\- Vital Signs
-
-\- Laboratory
-
-\- Adverse Events
-
-\- Concomitant Medications
-
-
-
-\## Project Workflow
-
-
-
+Project Workflow
 1\. Study protocol and synopsis development
-
 2\. Data Management Plan development
-
 3\. CRF specification and edit-check design
-
 4\. REDCap CRF implementation
-
 5\. Synthetic clinical data generation
-
 6\. Data quality issue creation and review
-
 7\. PostgreSQL data loading and validation
-
 8\. Query management
-
 9\. Cross-domain data reconciliation
-
 10\. Data review and closeout documentation
-
 11\. Power BI safety and data quality analytics
-
 12\. Git/GitHub portfolio development
 
-
-
-\## Data Quality Management
-
-
-
+Data Quality Management
 Controlled data quality issues were created to demonstrate common clinical data review scenarios, including:
-
-
-
-\- Missing required data
-
-\- Duplicate records
-
-\- Out-of-range values
-
-\- Date inconsistencies
-
-\- Cross-field inconsistencies
-
-\- Missing visit information
-
-
-
+- Missing required data
+- Duplicate records
+- Out-of-range values
+- Date inconsistencies
+- Cross-field inconsistencies
+- Missing visit information
 The issues were documented, queried, reviewed, and tracked through resolution or review.
 
-
-
-\## SQL Validation
-
-
+SQL Validation
 
 PostgreSQL was used to perform validation checks including:
 
