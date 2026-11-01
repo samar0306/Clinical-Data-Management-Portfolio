@@ -1,3 +1,58 @@
+-- RANK oldest per site
+WITH ranked AS (
+  SELECT site_id, subject_id, age, RANK() OVER (PARTITION BY site_id ORDER BY age DESC) as rnk
+  FROM subjects
+)
+SELECT * FROM ranked WHERE rnk=1;
+
+-- Top 2 per site (people)
+WITH ranked AS (
+  SELECT site_id, subject_id, age, ROW_NUMBER() OVER (PARTITION BY site_id ORDER BY age DESC) as rnk
+  FROM subjects
+)
+SELECT * FROM ranked WHERE rnk<=2;
+
+-- LAG previous age per site (oldest to youngest)
+SELECT site_id, subject_id, age,
+LAG(age) OVER (PARTITION BY site_id ORDER BY age DESC) as prev_age
+FROM subjects
+ORDER BY site_id, age DESC;
+
+-- LEAD next age per site
+SELECT site_id, subject_id, age,
+LEAD(age) OVER (PARTITION BY site_id ORDER BY age DESC) as next_age
+FROM subjects
+ORDER BY site_id, age DESC;
+
+-- LAG whole table oldest to youngest (76 down to 25)
+SELECT subject_id, age,
+LAG(age) OVER (ORDER BY age DESC) as prev_age
+FROM subjects
+ORDER BY age DESC;
+
+-- LEAD whole table youngest to oldest (25 up to 76)
+SELECT subject_id, age,
+LEAD(age) OVER (ORDER BY age ASC) as next_age
+FROM subjects
+ORDER BY age ASC;
+
+-- Running count per site
+SELECT site_id, subject_id, age,
+ROW_NUMBER() OVER (PARTITION BY site_id ORDER BY age DESC) as running_count
+FROM subjects;
+
+-- AVG OVER site average in same row (keeps 500 rows)
+SELECT subject_id, site_id, age,
+AVG(age) OVER (PARTITION BY site_id) as site_avg
+FROM subjects;
+
+-- Age above site average (CTE)
+WITH with_avg AS (
+  SELECT *, AVG(age) OVER (PARTITION BY site_id) as site_avg
+  FROM subjects
+)
+SELECT * FROM with_avg WHERE age > site_avg;
+
 -- Basic ranking by age descending
 SELECT subject_id, age, RANK() OVER (ORDER BY age DESC) as age_rank
 FROM subjects
