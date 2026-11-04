@@ -1,142 +1,36 @@
 Data taken from PoojaGoud07-cdm/clinical-data-management-portfolio:main
-End-to-End Clinical Data Management Portfolio Project
 
-This project demonstrates an end-to-end Clinical Data Management (CDM) workflow for a synthetic Phase II clinical trial. The project covers clinical data collection, CRF design, data quality review, SQL validation, query management, reconciliation, documentation, and safety analytics.
+# Clinical Trial Operations - Data Analyst Portfolio
 
-Study Overview
+## What is this project?
+Clinical trial operations portfolio focused on site performance and subject demographics analysis. Using a real clinical trial dataset (500 subjects across multiple sites) to practice Data Analyst workflows that are relevant for healthcare and consulting domains.
 
-Study ID: ONC-2026-001
-Study Phase: Phase II
-Therapeutic Area: Type 2 Diabetes
-Study Type: Randomized, double-blind, placebo-controlled
-Investigational Product: ABC-101
-Synthetic Subjects: 500
-Study Sites: 10
-Treatment Arms:
-&#x20; - ABC-101 50 mg
-&#x20; - ABC-101 100 mg
-&#x20; - Placebo
+This is not a pharma research project - it's Data Analyst role practice using clinical operations data to show I can work with sensitive operational data, site-level reporting, and diversity metrics.
 
-Objectives
-- Design clinical data collection instruments
-- Build and validate CRFs
-- Generate and review synthetic clinical trial data
-- Perform data quality checks
-- Validate data using SQL
-- Document and manage data queries
-- Perform cross-domain data reconciliation
-- Create clinical data management documentation
-- Develop a Power BI safety analytics dashboard
+## Dataset
+- Subjects table - 500 rows
+- Fields: site_id, age, sex, ethnicity, treatment group, weight, height, BMI
+- Covers multiple trial sites with enrollment diversity and age distribution
 
-Tools \& Technologies
-- REDCap
-- Microsoft Excel
-- Python
-- PostgreSQL
-- SQL
-- Power BI
-- Git
-- GitHub
+## What I'm doing in this repo
+- Analyzing site-wise enrollment - which sites have higher enrollment, age spread per site
+- Demographics analysis - gender distribution, ethnicity diversity (% Hispanic per site)
+- Treatment group analysis - average BMI per treatment, age gaps between oldest subjects per site
+- Operational reporting patterns - Top 2 oldest subjects per site, sites where average age is higher than overall average, sites with highest diversity
 
-Clinical Data Domains
-- Demographics
-- Medical History
-- Study Visits
-- Vital Signs
-- Laboratory
-- Adverse Events
-- Concomitant Medications
+All analysis done in DB Browser (SQLite) as real app practice, not just online editor.
 
-Project Workflow
-1\. Study protocol and synopsis development
-2\. Data Management Plan development
-3\. CRF specification and edit-check design
-4\. REDCap CRF implementation
-5\. Synthetic clinical data generation
-6\. Data quality issue creation and review
-7\. PostgreSQL data loading and validation
-8\. Query management
-9\. Cross-domain data reconciliation
-10\. Data review and closeout documentation
-11\. Power BI safety and data quality analytics
-12\. Git/GitHub portfolio development
+## My Plan
+- Phase 1 (Done): Basic reporting - counts per site/sex/treatment, average age/BMI
+- Phase 2 (Done): Window functions - RANK, LAG/LEAD, PARTITION BY site_id for site-level insights
+- Phase 3 (Pending - this week): Interview-level queries - site with highest Hispanic %, treatment with highest avg BMI, oldest/youngest per site with gaps
+- Phase 4 (Next): Power BI dashboard for same dataset - site performance visual
 
-Data Quality Management
-Controlled data quality issues were created to demonstrate common clinical data review scenarios, including:
-- Missing required data
-- Duplicate records
-- Out-of-range values
-- Date inconsistencies
-- Cross-field inconsistencies
-- Missing visit information
-The issues were documented, queried, reviewed, and tracked through resolution or review.
+## Timeline
+- Started Oct 2026, last SQL push Nov 2026
 
-SQL Validation
-PostgreSQL was used to perform validation checks including:
-- Duplicate record checks
-- Required field checks
-- Range validation
-- Orphan record checks
-- Date consistency checks
-- Cross-field consistency checks
-- Subject and visit linkage checks
-
-Query Management
-Eight simulated clinical data queries were documented and tracked from issue identification through response and resolution.
-
-Data Reconciliation
-Sixteen reconciliation checks were performed across clinical data domains.
-- 15 checks passed
-- 1 check remains under review
-
-The outstanding issue involves missing Visit Name values for 137 adverse event records. Subject-level linkage was confirmed, but visit-level linkage could not be established from the available data.
-
-Power BI Dashboard
-The Power BI dashboard provides clinical trial data management and safety analytics, including:
-- Total subjects
-- Total study visits
-- Total adverse events
-- Serious adverse events
-- Abnormal laboratory percentage
-- Subjects with adverse events
-- Laboratory result distribution
-- Study visit status
-- Treatment distribution
-- Adverse event severity
-- Adverse event seriousness
-- Adverse event relationship
-- Study site distribution
-- Subject demographics
-
-Key Results
-- 500 synthetic subjects
-- 3,230 study visit records
-- 137 adverse event records
-- 120 subjects with adverse events
-- 4 serious adverse events
-- 18,852 laboratory records
-- 46.9% abnormal laboratory results
-- 702 concomitant medication records
-- 1,012 medical history records
-
-Outstanding Data Issue
-The final reconciliation identified 137 adverse event records with missing Visit Name values.
-Subject-level linkage was confirmed, but visit-level linkage was not established. This issue remains documented for further review and is not classified as resolved.
-
-Skills Demonstrated
-- Clinical Data Management
-- CRF Development
-- Data Validation
-- Data Quality Management
-- Query Management
-- Data Reconciliation
-- SQL/PostgreSQL
-- Excel
-- Python
-- Power BI
-- Clinical Trial Documentation
-- Safety Data Review
-- Git/GitHub
+## Tools
+SQLite, DB Browser, GitHub, Power BI (upcoming)
 
 Project Structure
 ```text
